@@ -54,6 +54,7 @@ _**2. Ratios:**_
 _We also created ratios such as `bath_to_sqft_ratio` and `balcony_to_sqft_ratio` to give the model additional features that could be indicative of house quality._
 
 _`data['bath_to_sqft_ratio'] = data['bath'] / data['total_sqft']`_
+
 _`data['balcony_to_sqft_ratio'] = data['balcony'] / data['total_sqft']`_
 
 _**3. Size Conversion:**_
