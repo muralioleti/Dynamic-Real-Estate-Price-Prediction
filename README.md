@@ -5,15 +5,25 @@ _This project predicts the prices of houses in Bengaluru based on various featur
 # _Table of Contents_
 
 _1._ _Project Overview_
+
 _2. Data Preprocessing_
+
 _3. Feature Engineering_
+
 _4. Modeling_
+
 _5. Model Evaluation_
+
 _6. Hyperparameter Tuning_
+
 _7. Feature Importance_
+
 _8. Residual Analysis_
+
 _9. Results_
+
 _10. Conclusion_
+
 # _Project Overview_
 _In this project, we use a dataset of house listings in Bengaluru, India, with the objective of predicting house prices based on various features. The dataset includes columns such as_ _`area_type`, `availability`, `location`, `size`, `bath`, `balcony`, `price`, etc._
 
