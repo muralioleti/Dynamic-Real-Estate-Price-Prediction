@@ -63,6 +63,7 @@ _`data['size'] = data['size'].str.split(' ').str[0].astype(int)`_
 
 _**4. One-Hot Encoding:**_
 _Categorical variables such as `area_type`, `availability`, `location`, and `society` were converted to numeric features using one-hot encoding to make them suitable for model input._
+
 _`data = pd.get_dummies(data, columns=['area_type', 'availability', 'location', 'society'], drop_first=True)`_
 # _Modeling_
 _We used three different models to predict house prices: **Linear Regression**, **Random Forest Regressor**, and **XGBoost Regressor**._
