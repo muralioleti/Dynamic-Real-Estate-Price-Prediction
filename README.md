@@ -36,11 +36,13 @@ _`data = pd.read_csv('/content/drive/MyDrive/RESUMES/Bengaluru_House_Data.csv')`
 
 _**2. Handling Missing Data:**_
 _The `total_sqft` column, which represents the size of the house in square feet, sometimes contains invalid or missing values. We converted these values into numeric, coercing errors to NaN. Missing values were filled with the mean value of the respective column._
+
 _`data['total_sqft'] = pd.to_numeric(data['total_sqft'], errors='coerce')`_
 _`data['total_sqft'].fillna(data['total_sqft'].mean(), inplace=True)`_
 
 _**3. Removing Duplicates:**_
 _Duplicate rows were removed to ensure that the model isn't biased by repetitive data._
+
 _`data.drop_duplicates(inplace=True)`_
 # _Feature Engineering_
 _**1. Price Per Square Foot:**_
