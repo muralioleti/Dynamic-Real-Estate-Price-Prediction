@@ -72,18 +72,21 @@ _**1. Linear Regression:**_
 _A baseline model was built using Linear Regression._
 
 _`lr_model = LinearRegression()`_
+
 _`lr_model.fit(X_train, y_train)`_
 
 _**2. Random Forest Regressor:**_
 _A more powerful model, **Random Forest Regressor**, was used, leveraging parallel processing._
 
 _`rf_model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)`_
+
 _`rf_model.fit(X_train, y_train)`_
 
 _**3. XGBoost Regressor:**_
 _XGBoost, a highly efficient gradient boosting model, was also implemented._
 
 _`xgb_model = XGBRegressor(n_estimators=100, random_state=42, n_jobs=-1, verbosity=1)`_
+
 _`xgb_model.fit(X_train, y_train)`_
 # _Model Evaluation_
 _After training the models, we evaluated their performance using Mean Absolute Error (MAE) and R² score._
