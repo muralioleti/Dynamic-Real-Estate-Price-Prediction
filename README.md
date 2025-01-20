@@ -47,15 +47,18 @@ _`data.drop_duplicates(inplace=True)`_
 # _Feature Engineering_
 _**1. Price Per Square Foot:**_
 _A new feature, `price_per_sqft`, was created by dividing the price by the total square feet of the house._
+
 _`data['price_per_sqft'] = data['price'] / data['total_sqft']`_
 
 _**2. Ratios:**_
 _We also created ratios such as `bath_to_sqft_ratio` and `balcony_to_sqft_ratio` to give the model additional features that could be indicative of house quality._
+
 _`data['bath_to_sqft_ratio'] = data['bath'] / data['total_sqft']`_
 _`data['balcony_to_sqft_ratio'] = data['balcony'] / data['total_sqft']`_
 
 _**3. Size Conversion:**_
 _The `size` column, which contains the number of bedrooms (e.g., '2 BHK', '3 BHK'), was converted into a numeric format by extracting the number of bedrooms._
+
 _`data['size'] = data['size'].str.split(' ').str[0].astype(int)`_
 
 _**4. One-Hot Encoding:**_
@@ -66,16 +69,19 @@ _We used three different models to predict house prices: **Linear Regression**, 
 
 _**1. Linear Regression:**_
 _A baseline model was built using Linear Regression._
+
 _`lr_model = LinearRegression()`_
 _`lr_model.fit(X_train, y_train)`_
 
 _**2. Random Forest Regressor:**_
 _A more powerful model, **Random Forest Regressor**, was used, leveraging parallel processing._
+
 _`rf_model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)`_
 _`rf_model.fit(X_train, y_train)`_
 
 _**3. XGBoost Regressor:**_
 _XGBoost, a highly efficient gradient boosting model, was also implemented._
+
 _`xgb_model = XGBRegressor(n_estimators=100, random_state=42, n_jobs=-1, verbosity=1)`_
 _`xgb_model.fit(X_train, y_train)`_
 # _Model Evaluation_
