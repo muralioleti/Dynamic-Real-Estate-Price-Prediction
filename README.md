@@ -31,6 +31,7 @@ _We applied several data preprocessing techniques, followed by the development o
 # _Data Preprocessing_
 _**1. Loading the Dataset:**_
 _The dataset is loaded from a CSV file named `Bengaluru_House_Data.csv`. It contains detailed information about various properties for sale in Bengaluru._
+
 _`data = pd.read_csv('/content/drive/MyDrive/RESUMES/Bengaluru_House_Data.csv')`_
 
 _**2. Handling Missing Data:**_
