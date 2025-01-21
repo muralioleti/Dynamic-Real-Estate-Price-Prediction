@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Assume we have feature importance from a model like Random Forest
+importances = rf_model.feature_importances_
+feature_names = X.columns
+indices = np.argsort(importances)[::-1]
+
+# Sorting features by importance
+sorted_features = [feature_names[i] for i in indices]
+sorted_importances = importances[indices]
+
+# Bar plot
+plt.figure(figsize=(12, 8))
+plt.bar(sorted_features, sorted_importances, color='skyblue')
+plt.title('Feature Importance Bar Plot')
+plt.xlabel('Features')
+plt.ylabel('Importance Score')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.show()
