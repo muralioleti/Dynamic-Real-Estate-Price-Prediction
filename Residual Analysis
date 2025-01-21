@@ -1,0 +1,8 @@
+# Residual Plot for Random Forest
+residuals = y_test - y_pred_rf
+plt.scatter(y_pred_rf, residuals)
+plt.title('Residual Plot')
+plt.xlabel('Predicted Prices')
+plt.ylabel('Residuals')
+plt.axhline(y=0, color='red', linestyle='--')
+plt.show()
