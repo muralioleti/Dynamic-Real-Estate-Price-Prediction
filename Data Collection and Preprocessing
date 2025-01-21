@@ -1,0 +1,58 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Loading the dataset
+data = pd.read_csv('/content/drive/MyDrive/RESUMES/Bengaluru_House_Data.csv')
+
+# Convert the 'total_sqft' column to numeric, coercing errors to NaN
+data['total_sqft'] = pd.to_numeric(data['total_sqft'], errors='coerce')
+
+# Check for any rows that were converted to NaN
+print(data[data['total_sqft'].isna()])
+
+# Fill NaN values with the mean of the column
+data['total_sqft'].fillna(data['total_sqft'].mean(), inplace=True)
+
+# Now you can proceed with the rest of your data preprocessing
+data.fillna({
+    'area_type': data['area_type'].mode()[0],
+    'availability': data['availability'].mode()[0],
+    'location': data['location'].mode()[0],
+    'size': data['size'].mode()[0],
+    'society': data['society'].mode()[0],
+    'bath': data['bath'].mean(),
+    'balcony': data['balcony'].mean(),
+    'price': data['price'].mean()
+}, inplace=True)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Feature Engineering: Create new features
+data['price_per_sqft'] = data['price'] / data['total_sqft']
+data['bath_to_sqft_ratio'] = data['bath'] / data['total_sqft']
+data['balcony_to_sqft_ratio'] = data['balcony'] / data['total_sqft']
+
+# Convert 'size' column (e.g., '2 BHK', '3 BHK') to numeric (only the number of bedrooms)
+data['size'] = data['size'].str.split(' ').str[0].astype(int)
+
+# Ensure 'size' is numeric
+print(data['size'].head())
+
+# Convert categorical features to numeric using OneHotEncoding
+data = pd.get_dummies(data, columns=['area_type', 'availability', 'location', 'society'], drop_first=True)
+
+# Splitting data into features (X) and target (y)
+X = data.drop(columns=['price'])
+y = data['price']
+
+# Splitting data into train and test sets
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Standardizing the features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
